@@ -1,4 +1,4 @@
-# MobileBlox
+# Lumos X
 Mobile Blox Android 32 bits Executor Roblox Open Source, version 2.555.874
 
 This is supposed to be used for learning how Luau Executors work in an Android device

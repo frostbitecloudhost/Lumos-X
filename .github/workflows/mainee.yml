@@ -1,0 +1,36 @@
+name: Build and Publish Library
+
+on:
+  push:
+    branches: [ "main" ] # Specify the branches to trigger the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Choose your preferred runner
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Build environment
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x' # Choose your Python version
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake ninja-build
+
+    - name: Build with CMake
+      run: |
+        mkdir build
+        cd build
+        cmake .. -G Ninja # Use Ninja for faster builds
+        ninja
+        cd ..
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: library
+        path: build/lib/*.so 

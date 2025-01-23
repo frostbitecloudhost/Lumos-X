@@ -36,8 +36,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y lua5.3 luarocks # Adjust Lua version as needed
-        luarocks install luajit
-
+        luarocks install luajit --local
+        
     # Step 5: Build Java and Lua project
     - name: Build with Gradle
       run: ./gradlew build
